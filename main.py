@@ -11,14 +11,16 @@ with sr.Microphone() as source:
     print("time over")  
 
 
-foo = r.recognize_google(audio, language="bn-BD")
-print("text: " + foo)
+collected_audio = r.recognize_google(audio, language="bn-BD")
+print("text: " + collected_audio)
 
 qs = "আমার নাম কি"
-if foo == qs:
-    ans = "তোমার নাম প্রান্ত"
+if qs in collected_audio:
+    ans = "তোমার নাম তাহসিন"
+elif collected_audio == "তোমার নাম কি":
+    ans = "আমার নাম তুফান"
 else:
-    ans = "😂😂😂😂😂😂"
+    ans = "আমি কিছু বুঝিনি"
 
 print(ans)
 
